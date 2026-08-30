@@ -29,7 +29,7 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
     }
 
     .logo {
@@ -43,6 +43,10 @@
       color: #333;
       margin-left: 22px;
       font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #d6336c;
     }
 
     .hero {
@@ -63,9 +67,8 @@
     }
 
     .hero-btn,
-    .admin-btn {
+    .add-main-btn {
       display: inline-block;
-      background: #111;
       color: white;
       padding: 14px 28px;
       border-radius: 8px;
@@ -73,11 +76,21 @@
       font-weight: bold;
       border: none;
       cursor: pointer;
+      font-size: 16px;
     }
 
-    .admin-btn {
-      margin-top: 15px;
-      background: #e91e63;
+    .hero-btn {
+      background: #111;
+    }
+
+    .add-main-btn {
+      background: #d6336c;
+      margin-left: 10px;
+    }
+
+    .hero-btn:hover,
+    .add-main-btn:hover {
+      opacity: 0.85;
     }
 
     .section {
@@ -118,6 +131,7 @@
       overflow: hidden;
       box-shadow: 0 3px 15px rgba(0,0,0,0.08);
       transition: 0.3s;
+      position: relative;
     }
 
     .product:hover {
@@ -128,6 +142,7 @@
       width: 100%;
       height: 220px;
       object-fit: cover;
+      display: block;
     }
 
     .product-info {
@@ -142,6 +157,7 @@
     .rating {
       color: #e69b00;
       margin-bottom: 10px;
+      letter-spacing: 2px;
     }
 
     .price {
@@ -161,14 +177,24 @@
       font-weight: bold;
     }
 
+    .buy-btn:hover {
+      background: #333;
+    }
+
     .delete-btn {
       width: 100%;
       margin-top: 8px;
-      padding: 8px;
+      padding: 9px;
       border: none;
-      border-radius: 6px;
-      background: #ddd;
+      border-radius: 7px;
+      background: #eee;
+      color: #c00;
       cursor: pointer;
+      font-weight: bold;
+    }
+
+    .delete-btn:hover {
+      background: #ffdede;
     }
 
     .about {
@@ -177,61 +203,6 @@
       border-radius: 12px;
       padding: 35px;
       line-height: 1.7;
-    }
-
-    #adminPanel {
-      display: none;
-      background: white;
-      max-width: 650px;
-      margin: 30px auto;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-    }
-
-    #adminPanel h2 {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 7px;
-      font-size: 15px;
-    }
-
-    .add-product-btn {
-      width: 100%;
-      padding: 13px;
-      background: #111;
-      color: white;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .close-btn {
-      width: 100%;
-      padding: 11px;
-      margin-top: 10px;
-      background: #eee;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
     }
 
     footer {
@@ -246,6 +217,130 @@
       color: white;
       margin: 0 10px;
       text-decoration: none;
+    }
+
+    /* ADD PRODUCT MODAL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+      overflow-y: auto;
+      padding: 30px 15px;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .modal-header h2 {
+      font-size: 28px;
+    }
+
+    .close {
+      font-size: 32px;
+      cursor: pointer;
+      color: #555;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #d6336c;
+    }
+
+    .photo-help {
+      font-size: 13px;
+      color: #777;
+      margin-top: 7px;
+    }
+
+    .image-preview {
+      margin-top: 15px;
+      display: none;
+      text-align: center;
+    }
+
+    .image-preview img {
+      max-width: 220px;
+      max-height: 220px;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .submit-btn {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      background: #111;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cancel-btn {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      background: #eee;
+      color: #222;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .empty-message {
+      text-align: center;
+      color: #777;
+      padding: 30px;
+      grid-column: 1 / -1;
     }
 
     @media (max-width: 900px) {
@@ -282,378 +377,696 @@
       .hero h1 {
         font-size: 32px;
       }
+
+      .add-main-btn {
+        margin-left: 0;
+        margin-top: 12px;
+      }
+
+      .form-buttons {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">Trendora</div>
+  <!-- HEADER -->
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
-  </nav>
-</header>
+  <header>
+    <div class="logo">Trendora</div>
 
-
-<section class="hero" id="home">
-  <h1>Discover What's Trending</h1>
-  <p>Smart products. Great finds. Better prices.</p>
-
-  <a href="#products" class="hero-btn">
-    Explore Products
-  </a>
-
-  <br>
-
-  <button class="admin-btn" onclick="openAdmin()">
-    ➕ Add Product
-  </button>
-</section>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
 
 
-<!-- ADD PRODUCT PANEL -->
-<div id="adminPanel">
+  <!-- HERO -->
 
-  <h2>➕ Add New Product</h2>
+  <section class="hero" id="home">
 
-  <div class="form-group">
-    <label>Product Name</label>
-    <input
-      type="text"
-      id="productName"
-      placeholder="Example: Beautiful Jhumka Earrings">
-  </div>
-
-  <div class="form-group">
-    <label>Price</label>
-    <input
-      type="text"
-      id="productPrice"
-      placeholder="Example: ₹499">
-  </div>
-
-  <div class="form-group">
-    <label>Rating</label>
-    <input
-      type="text"
-      id="productRating"
-      placeholder="Example: 5">
-  </div>
-
-  <div class="form-group">
-    <label>Product Image URL</label>
-    <input
-      type="url"
-      id="productImage"
-      placeholder="https://example.com/image.jpg">
-  </div>
-
-  <div class="form-group">
-    <label>Amazon Affiliate Link</label>
-    <input
-      type="url"
-      id="productLink"
-      placeholder="Paste your Amazon affiliate link here">
-  </div>
-
-  <button class="add-product-btn" onclick="addProduct()">
-    Add Product
-  </button>
-
-  <button class="close-btn" onclick="closeAdmin()">
-    Close
-  </button>
-
-</div>
-
-
-<section class="section">
-  <h2>Shop By Category</h2>
-
-  <div class="categories">
-    <div class="category">👗 Fashion</div>
-    <div class="category">💎 Jewellery</div>
-    <div class="category">💄 Beauty</div>
-    <div class="category">🏠 Home</div>
-  </div>
-</section>
-
-
-<section class="section" id="products">
-
-  <h2>🔥 Trending Picks</h2>
-
-  <div class="products" id="productContainer"></div>
-
-</section>
-
-
-<section class="section" id="about">
-
-  <div class="about">
-
-    <h2>About Trendora</h2>
+    <h1>Discover What's Trending</h1>
 
     <p>
-      Trendora helps you discover useful, trending and affordable
-      products from trusted online stores.
+      Smart products. Great finds. Better prices.
     </p>
+
+    <a href="#products" class="hero-btn">
+      Explore Products
+    </a>
+
+    <button class="add-main-btn" onclick="openModal()">
+      ＋ Add Product
+    </button>
+
+  </section>
+
+
+  <!-- CATEGORIES -->
+
+  <section class="section">
+
+    <h2>Shop By Category</h2>
+
+    <div class="categories">
+
+      <div class="category">
+        👗 Fashion
+      </div>
+
+      <div class="category">
+        💎 Jewellery
+      </div>
+
+      <div class="category">
+        💄 Beauty
+      </div>
+
+      <div class="category">
+        🏠 Home
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+
+  <section class="section" id="products">
+
+    <h2>🔥 Trending Picks</h2>
+
+    <div class="products" id="productList">
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="section" id="about">
+
+    <div class="about">
+
+      <h2>About Trendora</h2>
+
+      <p>
+        Trendora helps you discover useful, trending and affordable
+        products from trusted online stores.
+      </p>
+
+      <br>
+
+      <p>
+        We may earn a commission when you purchase through some of
+        our product links.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
 
     <p>
-      We may earn a commission when you purchase through some of
-      our product links.
+      © 2026 Trendora. All rights reserved.
     </p>
 
-  </div>
+    <br>
 
-</section>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
 
-
-<footer>
-
-  <p>© 2026 Trendora. All rights reserved.</p>
-
-  <br>
-
-  <a href="#">Privacy Policy</a>
-  <a href="#">Terms</a>
-  <a href="#">Contact</a>
-
-</footer>
+  </footer>
 
 
-<script>
+  <!-- ADD PRODUCT MODAL -->
 
-const defaultProducts = [
-  {
-    name: "Stylish Sneakers",
-    price: "₹799",
-    rating: "5",
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
-    link: "#"
-  },
-  {
-    name: "Smart Watch",
-    price: "₹999",
-    rating: "5",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
-    link: "#"
-  },
-  {
-    name: "Beauty Essentials",
-    price: "₹399",
-    rating: "5",
-    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
-    link: "#"
-  },
-  {
-    name: "Home Essentials",
-    price: "₹499",
-    rating: "5",
-    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
-    link: "#"
-  }
-];
+  <div class="modal" id="productModal">
 
+    <div class="modal-content">
 
-function getProducts() {
+      <div class="modal-header">
 
-  const savedProducts = localStorage.getItem("trendoraProducts");
+        <h2>Add Product</h2>
 
-  if (savedProducts) {
-    return JSON.parse(savedProducts);
-  }
-
-  localStorage.setItem(
-    "trendoraProducts",
-    JSON.stringify(defaultProducts)
-  );
-
-  return defaultProducts;
-}
-
-
-function saveProducts(products) {
-
-  localStorage.setItem(
-    "trendoraProducts",
-    JSON.stringify(products)
-  );
-
-}
-
-
-function displayProducts() {
-
-  const container =
-    document.getElementById("productContainer");
-
-  const products = getProducts();
-
-  container.innerHTML = "";
-
-  products.forEach((product, index) => {
-
-    const card = document.createElement("div");
-
-    card.className = "product";
-
-    card.innerHTML = `
-
-      <img
-        src="${product.image}"
-        alt="${product.name}"
-      >
-
-      <div class="product-info">
-
-        <h3>${product.name}</h3>
-
-        <div class="rating">
-          ${"★".repeat(Math.min(5, Number(product.rating) || 5))}
-        </div>
-
-        <div class="price">
-          ${product.price}
-        </div>
-
-        <a
-          class="buy-btn"
-          href="${product.link}"
-          target="_blank"
-          rel="nofollow sponsored noopener"
-        >
-          View Deal
-        </a>
-
-        <button
-          class="delete-btn"
-          onclick="deleteProduct(${index})"
-        >
-          Delete Product
-        </button>
+        <span class="close" onclick="closeModal()">
+          &times;
+        </span>
 
       </div>
-    `;
-
-    container.appendChild(card);
-
-  });
-
-}
 
 
-function openAdmin() {
+      <form id="productForm">
 
-  document.getElementById("adminPanel").style.display =
-    "block";
+        <!-- PRODUCT NAME -->
 
-  window.scrollTo({
-    top: document.getElementById("adminPanel").offsetTop - 20,
-    behavior: "smooth"
-  });
+        <div class="form-group">
 
-}
+          <label for="productName">
+            Product Name
+          </label>
 
+          <input
+            type="text"
+            id="productName"
+            placeholder="Example: Beautiful Jhumka Earrings"
+            required
+          >
 
-function closeAdmin() {
-
-  document.getElementById("adminPanel").style.display =
-    "none";
-
-}
-
-
-function addProduct() {
-
-  const name =
-    document.getElementById("productName").value.trim();
-
-  const price =
-    document.getElementById("productPrice").value.trim();
-
-  const rating =
-    document.getElementById("productRating").value.trim();
-
-  const image =
-    document.getElementById("productImage").value.trim();
-
-  const link =
-    document.getElementById("productLink").value.trim();
+        </div>
 
 
-  if (!name || !price || !image || !link) {
+        <!-- PRICE -->
 
-    alert(
-      "Please fill Product Name, Price, Image URL and Amazon Affiliate Link."
-    );
+        <div class="form-group">
 
-    return;
-  }
+          <label for="productPrice">
+            Price
+          </label>
 
+          <input
+            type="text"
+            id="productPrice"
+            placeholder="Example: ₹499"
+            required
+          >
 
-  const products = getProducts();
-
-
-  products.push({
-
-    name: name,
-
-    price: price,
-
-    rating: rating || "5",
-
-    image: image,
-
-    link: link
-
-  });
+        </div>
 
 
-  saveProducts(products);
+        <!-- RATING -->
 
-  displayProducts();
+        <div class="form-group">
 
+          <label for="productRating">
+            Rating
+          </label>
 
-  document.getElementById("productName").value = "";
-  document.getElementById("productPrice").value = "";
-  document.getElementById("productRating").value = "";
-  document.getElementById("productImage").value = "";
-  document.getElementById("productLink").value = "";
+          <input
+            type="number"
+            id="productRating"
+            placeholder="Example: 5"
+            min="1"
+            max="5"
+            step="0.1"
+            value="5"
+            required
+          >
 
-
-  alert("Product added successfully!");
-
-
-  closeAdmin();
-
-}
-
-
-function deleteProduct(index) {
-
-  if (!confirm("Delete this product?")) {
-    return;
-  }
-
-  const products = getProducts();
-
-  products.splice(index, 1);
-
-  saveProducts(products);
-
-  displayProducts();
-
-}
+        </div>
 
 
-displayProducts();
+        <!-- CATEGORY -->
 
-</script>
+        <div class="form-group">
+
+          <label for="productCategory">
+            Category
+          </label>
+
+          <select id="productCategory">
+
+            <option value="Fashion">
+              👗 Fashion
+            </option>
+
+            <option value="Jewellery" selected>
+              💎 Jewellery
+            </option>
+
+            <option value="Beauty">
+              💄 Beauty
+            </option>
+
+            <option value="Home">
+              🏠 Home
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- PHOTO UPLOAD -->
+
+        <div class="form-group">
+
+          <label for="productImage">
+            Product Photo
+          </label>
+
+          <input
+            type="file"
+            id="productImage"
+            accept="image/*"
+            required
+          >
+
+          <div class="photo-help">
+            ನಿಮ್ಮ computerನಲ್ಲಿ save ಮಾಡಿರುವ product photo select ಮಾಡಿ.
+          </div>
+
+
+          <div class="image-preview" id="imagePreview">
+
+            <img id="previewImage" src="" alt="Preview">
+
+          </div>
+
+        </div>
+
+
+        <!-- AMAZON AFFILIATE LINK -->
+
+        <div class="form-group">
+
+          <label for="affiliateLink">
+            Amazon Affiliate Link
+          </label>
+
+          <input
+            type="url"
+            id="affiliateLink"
+            placeholder="Paste your Amazon affiliate link here"
+            required
+          >
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="form-buttons">
+
+          <button
+            type="submit"
+            class="submit-btn"
+          >
+            Add Product
+          </button>
+
+          <button
+            type="button"
+            class="cancel-btn"
+            onclick="closeModal()"
+          >
+            Close
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    /*
+      Products are stored in the browser using localStorage.
+    */
+
+    let products = JSON.parse(
+      localStorage.getItem("trendoraProducts")
+    ) || [];
+
+
+    /* OPEN MODAL */
+
+    function openModal() {
+
+      document.getElementById("productModal").style.display = "block";
+
+    }
+
+
+    /* CLOSE MODAL */
+
+    function closeModal() {
+
+      document.getElementById("productModal").style.display = "none";
+
+    }
+
+
+    /* CLOSE WHEN CLICKING OUTSIDE */
+
+    window.onclick = function(event) {
+
+      const modal =
+        document.getElementById("productModal");
+
+      if (event.target === modal) {
+
+        closeModal();
+
+      }
+
+    };
+
+
+    /* PHOTO PREVIEW */
+
+    document
+      .getElementById("productImage")
+      .addEventListener("change", function(event) {
+
+        const file = event.target.files[0];
+
+        if (!file) {
+          return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+          document
+            .getElementById("previewImage")
+            .src = e.target.result;
+
+          document
+            .getElementById("imagePreview")
+            .style.display = "block";
+
+        };
+
+        reader.readAsDataURL(file);
+
+      });
+
+
+    /* ADD PRODUCT */
+
+    document
+      .getElementById("productForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+          document
+            .getElementById("productName")
+            .value
+            .trim();
+
+
+        const price =
+          document
+            .getElementById("productPrice")
+            .value
+            .trim();
+
+
+        const rating =
+          document
+            .getElementById("productRating")
+            .value;
+
+
+        const category =
+          document
+            .getElementById("productCategory")
+            .value;
+
+
+        const affiliateLink =
+          document
+            .getElementById("affiliateLink")
+            .value
+            .trim();
+
+
+        const imageFile =
+          document
+            .getElementById("productImage")
+            .files[0];
+
+
+        if (!imageFile) {
+
+          alert("Please select a product photo.");
+
+          return;
+
+        }
+
+
+        const reader = new FileReader();
+
+
+        reader.onload = function(e) {
+
+          const newProduct = {
+
+            id: Date.now(),
+
+            name: name,
+
+            price: price,
+
+            rating: Number(rating),
+
+            category: category,
+
+            image: e.target.result,
+
+            affiliateLink: affiliateLink
+
+          };
+
+
+          products.push(newProduct);
+
+
+          localStorage.setItem(
+            "trendoraProducts",
+            JSON.stringify(products)
+          );
+
+
+          document
+            .getElementById("productForm")
+            .reset();
+
+
+          document
+            .getElementById("imagePreview")
+            .style.display = "none";
+
+
+          closeModal();
+
+
+          displayProducts();
+
+          alert("Product added successfully!");
+
+
+          document
+            .getElementById("products")
+            .scrollIntoView({
+              behavior: "smooth"
+            });
+
+        };
+
+
+        reader.readAsDataURL(imageFile);
+
+      });
+
+
+    /* DISPLAY PRODUCTS */
+
+    function displayProducts() {
+
+      const productList =
+        document.getElementById("productList");
+
+
+      productList.innerHTML = "";
+
+
+      if (products.length === 0) {
+
+        productList.innerHTML = `
+          <div class="empty-message">
+            No products added yet.
+            Click "＋ Add Product" to add your first product.
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      products.forEach(function(product) {
+
+
+        let stars = "";
+
+
+        const fullStars =
+          Math.floor(product.rating);
+
+
+        for (
+          let i = 1;
+          i <= 5;
+          i++
+        ) {
+
+          if (i <= fullStars) {
+
+            stars += "★";
+
+          } else {
+
+            stars += "☆";
+
+          }
+
+        }
+
+
+        const productCard =
+          document.createElement("div");
+
+
+        productCard.className = "product";
+
+
+        productCard.innerHTML = `
+
+          <img
+            src="${product.image}"
+            alt="${escapeHtml(product.name)}"
+          >
+
+          <div class="product-info">
+
+            <h3>
+              ${escapeHtml(product.name)}
+            </h3>
+
+            <div class="rating">
+              ${stars}
+            </div>
+
+            <div class="price">
+              ${escapeHtml(product.price)}
+            </div>
+
+            <a
+              class="buy-btn"
+              href="${escapeAttribute(product.affiliateLink)}"
+              target="_blank"
+              rel="nofollow sponsored noopener"
+            >
+              View Deal
+            </a>
+
+            <button
+              class="delete-btn"
+              onclick="deleteProduct(${product.id})"
+            >
+              🗑 Delete Product
+            </button>
+
+          </div>
+
+        `;
+
+
+        productList.appendChild(productCard);
+
+      });
+
+    }
+
+
+    /* DELETE PRODUCT */
+
+    function deleteProduct(id) {
+
+      const confirmDelete =
+        confirm(
+          "Are you sure you want to delete this product?"
+        );
+
+
+      if (!confirmDelete) {
+        return;
+      }
+
+
+      products =
+        products.filter(function(product) {
+
+          return product.id !== id;
+
+        });
+
+
+      localStorage.setItem(
+        "trendoraProducts",
+        JSON.stringify(products)
+      );
+
+
+      displayProducts();
+
+    }
+
+
+    /* BASIC HTML ESCAPING */
+
+    function escapeHtml(text) {
+
+      const div =
+        document.createElement("div");
+
+      div.textContent = text;
+
+      return div.innerHTML;
+
+    }
+
+
+    function escapeAttribute(text) {
+
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    }
+
+
+    /* LOAD PRODUCTS WHEN WEBSITE OPENS */
+
+    displayProducts();
+
+  </script>
 
 </body>
 </html>
