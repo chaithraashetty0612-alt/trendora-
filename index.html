@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Trendora - Smart Products & Best Deals</title>
+<meta name="description" content="Discover trending, useful and affordable products at Trendora.">
 
 <style>
 * {
@@ -19,7 +20,6 @@ body {
   color: #222;
 }
 
-/* HEADER */
 header {
   background: white;
   padding: 18px 6%;
@@ -41,14 +41,13 @@ nav a {
   text-decoration: none;
   color: #333;
   margin-left: 22px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-/* HERO */
 .hero {
   padding: 70px 6%;
   text-align: center;
-  background: linear-gradient(135deg,#fff,#eee);
+  background: linear-gradient(135deg, #fff, #eeeeee);
 }
 
 .hero h1 {
@@ -67,9 +66,10 @@ nav a {
   display: inline-block;
   padding: 14px 25px;
   border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
   border: none;
   cursor: pointer;
-  font-weight: bold;
   font-size: 16px;
   margin: 5px;
 }
@@ -84,7 +84,6 @@ nav a {
   color: white;
 }
 
-/* SECTION */
 .section {
   padding: 50px 6%;
 }
@@ -95,10 +94,9 @@ nav a {
   font-size: 30px;
 }
 
-/* CATEGORY */
 .categories {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
 }
 
@@ -112,10 +110,9 @@ nav a {
   font-weight: bold;
 }
 
-/* PRODUCTS */
 .products {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 22px;
 }
 
@@ -139,6 +136,7 @@ nav a {
 
 .product h3 {
   margin-bottom: 8px;
+  font-size: 18px;
 }
 
 .rating {
@@ -174,7 +172,24 @@ nav a {
   cursor: pointer;
 }
 
+.about {
+  background: white;
+  text-align: center;
+  border-radius: 12px;
+  padding: 35px;
+  line-height: 1.7;
+}
+
+footer {
+  background: #111;
+  color: white;
+  padding: 35px;
+  text-align: center;
+  margin-top: 30px;
+}
+
 /* MODAL */
+
 .modal {
   display: none;
   position: fixed;
@@ -196,13 +211,18 @@ nav a {
   border-radius: 15px;
 }
 
-.modal-content h2 {
-  text-align: center;
+.modal-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 25px;
 }
 
+.modal-title h2 {
+  margin: 0;
+}
+
 .close {
-  float: right;
   font-size: 30px;
   cursor: pointer;
 }
@@ -217,7 +237,8 @@ nav a {
   margin-bottom: 8px;
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
   width: 100%;
   padding: 13px;
   border: 1px solid #ccc;
@@ -225,30 +246,30 @@ nav a {
   font-size: 16px;
 }
 
-/* FILE INPUT */
-.file-input {
-  width: 100%;
-  padding: 15px !important;
-  border: 2px dashed #aaa !important;
+/* PHOTO FILE BUTTON */
+
+.form-group input[type="file"] {
+  padding: 14px;
+  border: 2px dashed #aaa;
   background: #fafafa;
   cursor: pointer;
 }
 
-/* PREVIEW */
-.preview {
-  text-align: center;
+/* IMAGE PREVIEW */
+
+#imagePreview {
   margin-top: 15px;
+  text-align: center;
 }
 
-.preview img {
+#imagePreview img {
   width: 200px;
   height: 200px;
   object-fit: contain;
-  border-radius: 10px;
   border: 1px solid #ddd;
+  border-radius: 10px;
 }
 
-/* BUTTON */
 .submit-btn {
   width: 100%;
   padding: 15px;
@@ -259,44 +280,24 @@ nav a {
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
 }
 
 .cancel-btn {
   width: 100%;
   padding: 14px;
+  margin-top: 10px;
   background: #eee;
+  color: #222;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
-/* ABOUT */
-.about {
-  background: white;
-  text-align: center;
-  border-radius: 12px;
-  padding: 35px;
-  line-height: 1.7;
-}
-
-/* FOOTER */
-footer {
-  background: #111;
-  color: white;
-  padding: 35px;
-  text-align: center;
-  margin-top: 30px;
-}
-
-/* MOBILE */
-@media (max-width:900px) {
-
+@media (max-width: 900px) {
   .products,
   .categories {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .hero h1 {
@@ -304,8 +305,7 @@ footer {
   }
 }
 
-@media (max-width:600px) {
-
+@media (max-width: 600px) {
   header {
     flex-direction: column;
     gap: 12px;
@@ -313,6 +313,7 @@ footer {
 
   nav a {
     margin: 0 7px;
+    font-size: 14px;
   }
 
   .products,
@@ -327,10 +328,8 @@ footer {
 </style>
 </head>
 
-
 <body>
 
-<!-- HEADER -->
 <header>
 
   <div class="logo">
@@ -346,7 +345,6 @@ footer {
 </header>
 
 
-<!-- HERO -->
 <section class="hero" id="home">
 
   <h1>
@@ -368,7 +366,6 @@ footer {
 </section>
 
 
-<!-- CATEGORIES -->
 <section class="section">
 
   <h2>
@@ -398,7 +395,6 @@ footer {
 </section>
 
 
-<!-- PRODUCTS -->
 <section class="section" id="products">
 
   <h2>
@@ -406,13 +402,11 @@ footer {
   </h2>
 
   <div class="products" id="productList">
-
   </div>
 
 </section>
 
 
-<!-- ABOUT -->
 <section class="section" id="about">
 
   <div class="about">
@@ -423,14 +417,15 @@ footer {
 
     <p>
       Trendora helps you discover useful,
-      trending and affordable products.
+      trending and affordable products from
+      trusted online stores.
     </p>
 
     <br>
 
     <p>
-      We may earn a commission when you
-      purchase through some product links.
+      We may earn a commission when you purchase
+      through some of our product links.
     </p>
 
   </div>
@@ -438,7 +433,6 @@ footer {
 </section>
 
 
-<!-- FOOTER -->
 <footer>
 
   © 2026 Trendora. All rights reserved.
@@ -446,22 +440,27 @@ footer {
 </footer>
 
 
-
 <!-- ADD PRODUCT POPUP -->
+
 <div class="modal" id="productModal">
 
   <div class="modal-content">
 
-    <span class="close" onclick="closeModal()">
-      ×
-    </span>
+    <div class="modal-title">
 
-    <h2>
-      Add Product
-    </h2>
+      <h2>
+        Add Product
+      </h2>
+
+      <span class="close" onclick="closeModal()">
+        ×
+      </span>
+
+    </div>
 
 
-    <!-- NAME -->
+    <!-- PRODUCT NAME -->
+
     <div class="form-group">
 
       <label>
@@ -478,6 +477,7 @@ footer {
 
 
     <!-- PRICE -->
+
     <div class="form-group">
 
       <label>
@@ -494,6 +494,7 @@ footer {
 
 
     <!-- RATING -->
+
     <div class="form-group">
 
       <label>
@@ -513,6 +514,7 @@ footer {
 
 
     <!-- PHOTO -->
+
     <div class="form-group">
 
       <label>
@@ -522,22 +524,20 @@ footer {
       <input
         type="file"
         id="productImage"
-        class="file-input"
         accept="image/*"
       >
 
-      <div class="preview" id="imagePreview">
-
+      <div id="imagePreview">
         <p>
           Choose a photo from your device
         </p>
-
       </div>
 
     </div>
 
 
-    <!-- AMAZON LINK -->
+    <!-- AMAZON AFFILIATE LINK -->
+
     <div class="form-group">
 
       <label>
@@ -547,13 +547,14 @@ footer {
       <input
         type="url"
         id="affiliateLink"
-        placeholder="Paste Amazon affiliate link"
+        placeholder="Paste your Amazon affiliate link here"
       >
 
     </div>
 
 
-    <!-- ADD BUTTON -->
+    <!-- ADD PRODUCT -->
+
     <button
       class="submit-btn"
       onclick="addProduct()"
@@ -562,7 +563,8 @@ footer {
     </button>
 
 
-    <!-- CLOSE -->
+    <!-- CANCEL -->
+
     <button
       class="cancel-btn"
       onclick="closeModal()"
@@ -575,19 +577,18 @@ footer {
 </div>
 
 
-
 <script>
 
-/* =========================
-   IMAGE VARIABLE
-========================= */
+/* ==========================
+   VARIABLES
+========================== */
 
 let selectedImage = "";
 
 
-/* =========================
-   OPEN POPUP
-========================= */
+/* ==========================
+   OPEN MODAL
+========================== */
 
 function openModal() {
 
@@ -596,9 +597,9 @@ function openModal() {
 }
 
 
-/* =========================
-   CLOSE POPUP
-========================= */
+/* ==========================
+   CLOSE MODAL
+========================== */
 
 function closeModal() {
 
@@ -607,9 +608,9 @@ function closeModal() {
 }
 
 
-/* =========================
+/* ==========================
    CHOOSE PHOTO
-========================= */
+========================== */
 
 document
 .getElementById("productImage")
@@ -622,11 +623,9 @@ document
   }
 
 
-  /* Make sure it is image */
-
   if (!file.type.startsWith("image/")) {
 
-    alert("Please choose an image.");
+    alert("Please choose an image file.");
 
     this.value = "";
 
@@ -634,8 +633,6 @@ document
 
   }
 
-
-  /* Read image */
 
   const reader = new FileReader();
 
@@ -649,7 +646,7 @@ document
 
       <img
         src="${selectedImage}"
-        alt="Selected Product Photo"
+        alt="Product Photo Preview"
       >
 
       <p style="margin-top:8px;">
@@ -666,10 +663,9 @@ document
 });
 
 
-
-/* =========================
+/* ==========================
    ADD PRODUCT
-========================= */
+========================== */
 
 function addProduct() {
 
@@ -689,8 +685,6 @@ function addProduct() {
     document.getElementById("affiliateLink").value.trim();
 
 
-  /* CHECK NAME */
-
   if (name === "") {
 
     alert("Please enter Product Name.");
@@ -699,8 +693,6 @@ function addProduct() {
 
   }
 
-
-  /* CHECK PRICE */
 
   if (price === "") {
 
@@ -711,8 +703,6 @@ function addProduct() {
   }
 
 
-  /* CHECK RATING */
-
   if (rating === "") {
 
     alert("Please enter Rating.");
@@ -721,8 +711,6 @@ function addProduct() {
 
   }
 
-
-  /* CHECK PHOTO */
 
   if (selectedImage === "") {
 
@@ -733,8 +721,6 @@ function addProduct() {
   }
 
 
-  /* CHECK LINK */
-
   if (link === "") {
 
     alert("Please enter Amazon Affiliate Link.");
@@ -743,8 +729,6 @@ function addProduct() {
 
   }
 
-
-  /* PRODUCT */
 
   const product = {
 
@@ -763,20 +747,14 @@ function addProduct() {
   };
 
 
-  /* GET PRODUCTS */
-
   let products =
     JSON.parse(
       localStorage.getItem("trendoraProducts")
     ) || [];
 
 
-  /* ADD */
-
   products.push(product);
 
-
-  /* SAVE */
 
   localStorage.setItem(
     "trendoraProducts",
@@ -784,12 +762,10 @@ function addProduct() {
   );
 
 
-  /* DISPLAY */
-
   displayProducts();
 
 
-  /* CLEAR */
+  /* RESET FORM */
 
   document.getElementById("productName").value = "";
 
@@ -800,7 +776,6 @@ function addProduct() {
   document.getElementById("affiliateLink").value = "";
 
   document.getElementById("productImage").value = "";
-
 
   selectedImage = "";
 
@@ -814,8 +789,6 @@ function addProduct() {
   `;
 
 
-  /* CLOSE */
-
   closeModal();
 
 
@@ -824,10 +797,9 @@ function addProduct() {
 }
 
 
-
-/* =========================
+/* ==========================
    DISPLAY PRODUCTS
-========================= */
+========================== */
 
 function displayProducts() {
 
@@ -908,7 +880,7 @@ function displayProducts() {
           class="delete-btn"
           onclick="deleteProduct(${product.id})"
         >
-          🗑 Delete
+          🗑 Delete Product
         </button>
 
       </div>
@@ -923,10 +895,9 @@ function displayProducts() {
 }
 
 
-
-/* =========================
+/* ==========================
    DELETE PRODUCT
-========================= */
+========================== */
 
 function deleteProduct(id) {
 
@@ -962,10 +933,9 @@ function deleteProduct(id) {
 }
 
 
-
-/* =========================
+/* ==========================
    LOAD PRODUCTS
-========================= */
+========================== */
 
 displayProducts();
 
